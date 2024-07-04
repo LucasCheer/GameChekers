@@ -16,6 +16,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
             board.appendChild(cell);
         }
     }
-
-    
 })
+
+class Persona{
+    constructor(name, lastName){
+        this.name = name;
+        this.lastName = lastName;
+    }
+    saludar(){
+        console.log("Hola mi nombre es " + this.name + " y mi apellido es " + this.lastName)
+    }
+}
+
+const persona1 = new Persona("Juan", "Perez");
+persona1.saludar();
+
+const persona2 = new Persona("Muzan","Demon");
+persona2.saludar();
