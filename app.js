@@ -1,6 +1,6 @@
+//Evento de carga de pagina
 document.addEventListener("DOMContentLoaded", (event) => {
     const board = document.getElementById("board");
-
 
     for (let row = 0; row < 8; row++) {
         for (let col = 0; col < 8; col++) {
@@ -16,7 +16,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
             board.appendChild(cell);
         }
     }
-})
+});
+
+
+//POO
 
 class Persona{
     constructor(name, lastName){
