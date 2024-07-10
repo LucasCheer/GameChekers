@@ -1,3 +1,6 @@
+//Variables
+const d = document;
+
 //Evento de carga de pagina
 document.addEventListener("DOMContentLoaded", (event) => {
     const board = document.getElementById("board");
@@ -16,23 +19,28 @@ document.addEventListener("DOMContentLoaded", (event) => {
             board.appendChild(cell);
         }
     }
+
+    // dragStart => Arrastrar (elemento que vamos a mover)
+    // dragOver => Me posiciono sobre el objetivo 
+    // drop => Soltar (termina el evento de arrastrar)
+    // dataTransfer => objetivo que captura al objeto arrastrado, este metodo captura algo.
+
+    const checkers = document.querySelectorAll('img')
+    const cell = document.querySelectorAll('.cell')
+
+    checkers.forEach(c => c.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('target', e.target.id);
+        console.log('me estas arrastrando')
+    }))
+    cell.forEach( c =>{
+        c.addEventListener('dragover', (e) =>{
+            e.preventDefault()
+            console.log('Preveniste evento por defecto')
+        });
+        c.addEventListener('drop', (e) => {
+            const id = e.dataTransfer.getData('target');
+            const element = document.getElementById(id);
+            e.target.appendChild(element);
+        });
+    })
 });
-
-
-//POO
-
-class Persona{
-    constructor(name, lastName){
-        this.name = name;
-        this.lastName = lastName;
-    }
-    saludar(){
-        console.log("Hola mi nombre es " + this.name + " y mi apellido es " + this.lastName)
-    }
-}
-
-const persona1 = new Persona("Juan", "Perez");
-persona1.saludar();
-
-const persona2 = new Persona("Muzan","Demon");
-persona2.saludar();
