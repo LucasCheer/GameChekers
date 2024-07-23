@@ -47,4 +47,5 @@ svg{
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    border: 3px solid gray;
 }

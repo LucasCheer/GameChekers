@@ -79,13 +79,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 });
 
+// dragStart => Arrastrar (elemento que vamos a mover)
+// dragOver => Me posiciono sobre el objetivo 
+// drop => Soltar (termina el evento de arrastrar)
+// dataTransfer => objetivo que captura al objeto arrastrado, este metodo captura algo en este caso ID.
 
-
-
-//     // dragStart => Arrastrar (elemento que vamos a mover)
-//     // dragOver => Me posiciono sobre el objetivo 
-//     // drop => Soltar (termina el evento de arrastrar)
-//     // dataTransfer => objetivo que captura al objeto arrastrado, este metodo captura algo en este caso ID.
 //     const checkers = document.querySelectorAll('img')
 //     const cell = document.querySelectorAll('.cell')
 
