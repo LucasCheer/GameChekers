@@ -1,4 +1,3 @@
-
 //Clases Piece y Board
 
 class Piece {
@@ -63,6 +62,8 @@ class Board{
                 if (piece) {
                     const pieceElement = document.createElement('div');
                     pieceElement.classList.add('piece', piece.color);
+                    pieceElement.id = piece.id; 
+                    pieceElement.setAttribute('draggable','true') // Le doyla clase draggable a todas las piezas
                     cell.appendChild(pieceElement);
                 }
                 
@@ -72,35 +73,42 @@ class Board{
     }
 };
 
-//Evento de carga de pagina
-document.addEventListener("DOMContentLoaded", (event) => {
-    const board = new Board();
-    console.log(board.createBoard());
-
-});
-
 // dragStart => Arrastrar (elemento que vamos a mover)
 // dragOver => Me posiciono sobre el objetivo 
 // drop => Soltar (termina el evento de arrastrar)
 // dataTransfer => objetivo que captura al objeto arrastrado, este metodo captura algo en este caso ID.
 
-//     const checkers = document.querySelectorAll('img')
-//     const cell = document.querySelectorAll('.cell')
+//Evento de carga de pagina
+document.addEventListener("DOMContentLoaded", (event) => {
+    const board = new Board();
+    console.log(board.createBoard());
 
-//     checkers.forEach(c => c.addEventListener('dragstart', (e) => {
-//         e.dataTransfer.setData('target', e.target.id);
-//         console.log('me estas arrastrando')
-//     }))
-//     cell.forEach( c =>{
-//         c.addEventListener('dragover', (e) =>{
-//             e.preventDefault()
-//             console.log('Preveniste evento por defecto')
-//         });
-//         c.addEventListener('drop', (e) => {
-//             const id = e.dataTransfer.getData('target');
-//             const element = document.getElementById(id);
-//             e.target.appendChild(element);
-//         });
-//     })
-// });
+    // Declaro todas las pieces y celdas
+    const pieces = document.querySelectorAll('.piece');
+    const cells = document.querySelectorAll('.cell');
+
+    //Por cada pieza agrego el evento dragstart
+    pieces.forEach(piece => piece.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('target', e.target.id);
+        console.log('me estas moviendo', e.target.id);
+    }))
+    //Por cada celda agrego el dragover y drop
+    cells.forEach(cell => {
+        cell.addEventListener('dragover' , (e) => {
+            e.preventDefault();
+        });
+        cell.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const id = e.dataTransfer.getData('target');
+            const element = document.getElementById(id);
+            if(element && e.target.classList.contains ('cell')){
+                e.target.appendChild(element);
+            }
+            
+        })
+    })
+
+
+});
+
 
