@@ -24,28 +24,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
         console.log(pieceSelected)
 
     }))
+    cells.forEach(cell => cell.addEventListener('click', (e) => {
+        // Mueva la pieza selecionada
+        e.target.appendChild(pieceSelected);
+        // Remuevo la clase "selected" y limpio la variable pieceSelected
+        pieceSelected.classList.remove('selected');
+        pieceSelected = null;
+    }))
 });
-
-    // Por cada pieza agrego el evento dragstart
-    // pieces.forEach(piece => piece.addEventListener('dragstart', (e) => {
-    //     e.dataTransfer.setData('text/plain', e.target.id);
-    //     console.log('Empezaste a mover', e.target.id);
-    // }));
-
-    // // Por cada celda agrego dragover y drop
-    // cells.forEach(cell => {
-    //     cell.addEventListener('dragover', (e) => {
-    //         e.preventDefault();  // Permite el drop en esta celda
-    //     });
-
-    //     cell.addEventListener('drop', (e) => {
-    //         e.preventDefault();
-    //         const id = e.dataTransfer.getData('text/plain');
-    //         const draggedElement = document.getElementById(id);
-
-    //         // Asegurarse de que el elemento arrastrado exista y que se suelte en una celda válida
-    //         if (draggedElement && e.target.classList.contains('cell')) {
-    //             e.target.appendChild(draggedElement);
-    //         }
-    //     });
-    // });
