@@ -43,7 +43,7 @@ export default class Board{
                 cell.classList.add('cell');
                 
                 if ((row + col) % 2 === 0) {
-                    cell.classList.add('white');
+                    cell.classList.add('white','cell-invalid');
                 } else {
                     cell.classList.add('red');
                 }
