@@ -53,7 +53,6 @@ export default class Board{
                     const pieceElement = document.createElement('div');
                     pieceElement.classList.add('piece', piece.color);
                     pieceElement.id = piece.id; 
-                    pieceElement.setAttribute('draggable','true') // Le doyla clase draggable a todas las piezas
                     cell.appendChild(pieceElement);
                 }
                 
